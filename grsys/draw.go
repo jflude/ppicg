@@ -1,9 +1,16 @@
 package grsys
 
-import "image"
+import (
+	"fmt"
+	"image"
+)
 
 var pen image.Point
 var outside bool
+
+func plotCoord(x float32) int {
+	return int(1000*x + 0.5)
+}
 
 func IX(x float32) int {
 	ix := int(Density * (x - XMin))
@@ -36,12 +43,20 @@ func IY(y float32) int {
 func Move(x, y float32) {
 	pen.X = IX(x)
 	pen.Y = IY(y)
+	if plotFile != nil {
+		fmt.Fprint(plotFile, "PU;PA", plotCoord(x-XMin), ",",
+			plotCoord(y-YMin), ";\n")
+	}
 }
 
 func Draw(x, y float32) {
 	to := image.Pt(IX(x), IY(y))
 	DrawLine(pen.X, pen.Y, to.X, to.Y)
 	pen = to
+	if plotFile != nil {
+		fmt.Fprint(plotFile, "PD;PA", plotCoord(x-XMin), ",",
+			plotCoord(y-YMin), ";\n")
+	}
 }
 
 func PutPix(x, y int) {

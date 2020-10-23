@@ -1,9 +1,11 @@
 package grsys
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/gif"
+	"io"
 	"log"
 	"os"
 	"os/user"
@@ -27,11 +29,12 @@ var (
 	ForeGrColor int = 14
 	BackGrColor int = 0
 
-	palette color.Palette
-	canvas  *image.Paletted
+	palette  color.Palette
+	canvas   *image.Paletted
+	plotFile io.WriteCloser
 )
 
-func Initgr() {
+func Initgr(filename string) {
 	NColors = GetMaxColor() + 1
 	palette = make([]color.Color, NColors)
 	for i := range palette {
@@ -54,9 +57,28 @@ func Initgr() {
 	} else {
 		RMax = YCenter
 	}
+	if filename != "" {
+		var err error
+		plotFile, err = os.Create(getWorkPath(filename))
+		if err != nil {
+			ErrorMsg(err.Error())
+		}
+		fmt.Fprint(plotFile, "IN;SP0;SC0,10000,0,",
+			plotCoord(YMax-YMin), ";\n")
+	}
 }
 
 func Endgr() {
+	if outside {
+		log.SetFlags(0)
+		log.Println("Warning: attempts to draw outside the screen")
+	}
+	if plotFile != nil {
+		if err := plotFile.Close(); err != nil {
+			ErrorMsg(err.Error())
+		}
+		plotFile = nil
+	}
 	f, err := os.Create(getWorkPath("ppicg.gif"))
 	if err != nil {
 		ErrorMsg(err.Error())

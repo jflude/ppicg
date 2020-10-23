@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	grsys.Initgr()
+	grsys.Initgr("")
 	r := grsys.RMax
 	delta := r / 20
 	for i := 0; i < 20; i++ {

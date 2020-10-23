@@ -14,7 +14,7 @@ func main() {
 	var q float32 = 0.05
 	p := 1 - q
 
-	grsys.Initgr()
+	grsys.Initgr("")
 	for i := 0; i < 50; i++ {
 		grsys.Move(xA, yA)
 		grsys.Draw(xB, yB)
