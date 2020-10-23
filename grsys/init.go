@@ -13,14 +13,14 @@ import (
 )
 
 var (
-	XMin    float32 = 0
-	XMax    float32 = 10
-	YMin    float32 = 0
-	YMax    float32
-	XCenter float32
-	YCenter float32
-	RMax    float32
-	Density float32
+	XMin    float64 = 0
+	XMax    float64 = 10
+	YMin    float64 = 0
+	YMax    float64
+	XCenter float64
+	YCenter float64
+	RMax    float64
+	Density float64
 
 	ImageWidth  int = 800 // X__max
 	ImageHeight int = 600 // Y__max
@@ -48,8 +48,8 @@ func Initgr(filename string) {
 	BackGrColor = 0
 	ForeGrColor = 14
 
-	Density = float32(ImageWidth) / (XMax - XMin)
-	YMax = YMin + float32(ImageHeight)/Density
+	Density = float64(ImageWidth) / (XMax - XMin)
+	YMax = YMin + float64(ImageHeight)/Density
 	XCenter = (XMin + XMax) / 2
 	YCenter = (YMin + YMax) / 2
 	if XCenter < YCenter {

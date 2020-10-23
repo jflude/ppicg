@@ -10,11 +10,11 @@ func main() {
 	r := grsys.RMax
 	delta := r / 20
 	for i := 0; i < 20; i++ {
-		var lastx, lasty float32
+		var lastx, lasty float64
 		for j := 0; j < 60; j++ {
 			theta := 2 * math.Pi * float64(j) / 60
-			x := grsys.XCenter + r*float32(math.Cos(theta))
-			y := grsys.YCenter + r*float32(math.Sin(theta))
+			x := grsys.XCenter + r*math.Cos(theta)
+			y := grsys.YCenter + r*math.Sin(theta)
 			if j == 0 {
 				grsys.Move(x, y)
 				lastx = x

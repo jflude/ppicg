@@ -8,11 +8,11 @@ import (
 var pen image.Point
 var outside bool
 
-func plotCoord(x float32) int {
+func plotCoord(x float64) int {
 	return int(1000*x + 0.5)
 }
 
-func IX(x float32) int {
+func IX(x float64) int {
 	ix := int(Density * (x - XMin))
 	if ix < 0 {
 		ix = 0
@@ -24,7 +24,7 @@ func IX(x float32) int {
 	return ix
 }
 
-func iy(y float32) int {
+func iy(y float64) int {
 	iy := int(Density * (y - YMin))
 	if iy < 0 {
 		iy = 0
@@ -36,11 +36,11 @@ func iy(y float32) int {
 	return iy
 }
 
-func IY(y float32) int {
+func IY(y float64) int {
 	return ImageHeight - iy(y)
 }
 
-func Move(x, y float32) {
+func Move(x, y float64) {
 	pen.X = IX(x)
 	pen.Y = IY(y)
 	if plotFile != nil {
@@ -49,7 +49,7 @@ func Move(x, y float32) {
 	}
 }
 
-func Draw(x, y float32) {
+func Draw(x, y float64) {
 	to := image.Pt(IX(x), IY(y))
 	DrawLine(pen.X, pen.Y, to.X, to.Y)
 	pen = to

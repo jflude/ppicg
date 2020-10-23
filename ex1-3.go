@@ -13,7 +13,7 @@ func main() {
 	}
 
 	grsys.Initgr("")
-	var width, height, xOrg, yOrg float32
+	var width, height, xOrg, yOrg float64
 	if grsys.ImageWidth > grsys.ImageHeight {
 		height = grsys.YMax - grsys.YMin
 		width = height
@@ -43,8 +43,8 @@ func main() {
 		grsys.Draw(xOpp, y)
 	}
 
-	xHchInc := xSqInc / float32(m)
-	yHchInc := ySqInc / float32(m)
+	xHchInc := xSqInc / float64(m)
+	yHchInc := ySqInc / float64(m)
 	firstBlack := true
 	for ySq := yOrg; ySq < yOpp; ySq += ySqInc {
 		firstBlack = !firstBlack
@@ -53,8 +53,7 @@ func main() {
 			if isBlack = !isBlack; !isBlack {
 				continue
 			}
-			var i float32 = 0
-			for ; i < float32(m); i += 1 {
+			for i := 0.0; i < float64(m); i += 1 {
 				grsys.Move(xSq+i*xHchInc, ySq)
 				grsys.Draw(xSq+xSqInc, ySq+ySqInc-i*yHchInc)
 				grsys.Move(xSq, ySq+i*yHchInc)
