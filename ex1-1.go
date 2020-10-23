@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	fmt.Print("Enter the coordinates of the triangle's vertices: ")
 	var xA, yA, xB, yB, xC, yC float32
 	if _, err := fmt.Scanln(&xA, &yA, &xB, &yB, &xC, &yC); err != nil {
 		grsys.ErrorMsg(err.Error())
