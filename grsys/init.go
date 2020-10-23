@@ -22,8 +22,8 @@ var (
 	RMax    float32
 	Density float32
 
-	ImageWidth  int = 1024 // X__max
-	ImageHeight int = 768  // Y__max
+	ImageWidth  int = 800 // X__max
+	ImageHeight int = 600 // Y__max
 	NColors     int
 
 	ForeGrColor int = 14
