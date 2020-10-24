@@ -1,3 +1,4 @@
+// This program draws n x n sets of squares, arranged as on a chess board.
 package main
 
 import (

@@ -1,3 +1,4 @@
+// This program draws 50 squares inside each other.
 package main
 
 import "github.com/jflude/ppicg/grsys"

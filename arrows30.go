@@ -1,3 +1,5 @@
+// This program draws 30 arrows, flying counter-clockwise about the center
+// of the screen.
 package main
 
 import (
