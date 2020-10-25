@@ -12,7 +12,7 @@ func main() {
 	phi := math.Pi / 15
 	cosphi := math.Cos(phi)
 	sinphi := math.Sin(phi)
-	grsys.Initgr("")
+	grsys.InitGr("")
 
 	center := grsys.Vec{grsys.XCenter, grsys.YCenter}
 	start := center.Add(grsys.Vec{0.9 * grsys.RMax, 0})
@@ -31,5 +31,5 @@ func main() {
 		p[1].Draw()
 	}
 
-	grsys.Endgr()
+	grsys.EndGr()
 }

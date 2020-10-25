@@ -6,7 +6,7 @@ import "github.com/jflude/ppicg/grsys"
 func main() {
 	q := 0.05 // q = lambda (see discussion below)
 	p := 1 - q
-	grsys.Initgr("")
+	grsys.InitGr("")
 
 	r := 0.95 * grsys.RMax
 	xA := grsys.XCenter - r
@@ -38,5 +38,5 @@ func main() {
 		yD = p*yD + q*yT
 	}
 
-	grsys.Endgr()
+	grsys.EndGr()
 }

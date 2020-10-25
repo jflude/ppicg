@@ -14,7 +14,7 @@ func main() {
 	q := 0.05
 	p := 1 - q
 
-	grsys.Initgr("")
+	grsys.InitGr("")
 	for i := 0; i < 50; i++ {
 		grsys.Move(xA, yA)
 		grsys.Draw(xB, yB)
@@ -26,5 +26,5 @@ func main() {
 		xB, yB = p*xB+q*xC, p*yB+q*yC
 		xC, yC = p*xC+q*xT, p*yC+q*yT
 	}
-	grsys.Endgr()
+	grsys.EndGr()
 }

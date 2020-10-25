@@ -33,9 +33,10 @@ var (
 	palette  color.Palette
 	canvas   *image.Paletted
 	plotFile io.WriteCloser
+	inGrMode bool
 )
 
-func Initgr(filename string) {
+func InitGr(filename string) {
 	NColors = GetMaxColor() + 1
 	palette = make([]color.Color, NColors)
 	for i := range palette {
@@ -67,9 +68,11 @@ func Initgr(filename string) {
 		fmt.Fprint(plotFile, "IN;SP0;SC0,10000,0,",
 			plotCoord(YMax-YMin), ";\n")
 	}
+	inGrMode = true
 }
 
-func Endgr() {
+func EndGr() {
+	inGrMode = false
 	if outside {
 		log.SetFlags(0)
 		log.Println("Warning: attempts to draw outside the screen")

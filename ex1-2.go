@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	grsys.Initgr("")
+	grsys.InitGr("")
 	r := grsys.RMax
 	delta := r / 20
 	for i := 0; i < 20; i++ {
@@ -26,5 +26,5 @@ func main() {
 		grsys.Draw(lastx, lasty)
 		r -= delta
 	}
-	grsys.Endgr()
+	grsys.EndGr()
 }

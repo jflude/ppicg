@@ -12,7 +12,7 @@ func main() {
 		grsys.ErrorMsg(err.Error())
 	}
 
-	grsys.Initgr("")
+	grsys.InitGr("")
 	var width, height, xOrg, yOrg float64
 	if grsys.ImageWidth > grsys.ImageHeight {
 		height = grsys.YMax - grsys.YMin
@@ -61,5 +61,5 @@ func main() {
 			}
 		}
 	}
-	grsys.Endgr()
+	grsys.EndGr()
 }

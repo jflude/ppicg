@@ -9,7 +9,7 @@ import (
 func main() {
 	alpha := 72 * math.Pi / 180
 	phi0 := 0.0
-	grsys.Initgr("")
+	grsys.InitGr("")
 
 	d := 0.1 * grsys.RMax
 	xmin := grsys.XMin + d
@@ -40,5 +40,5 @@ func main() {
 			grsys.ClipDraw(x1, y1, x2, y2)
 		}
 	}
-	grsys.Endgr()
+	grsys.EndGr()
 }

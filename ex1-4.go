@@ -12,7 +12,7 @@ func main() {
 	if _, err := fmt.Scanln(&r); err != nil {
 		grsys.ErrorMsg(err.Error())
 	}
-	grsys.Initgr("")
+	grsys.InitGr("")
 
 	width := grsys.XMax - grsys.XMin
 	nRow := math.Floor((width/r + 1) / 3)
@@ -29,7 +29,7 @@ func main() {
 	for i, y := int(nCol)-1, yOrig; i > 0; i, y = i-1, y+h {
 		row(nRow-1, xOrig+3*r/2, y+h/2, r)
 	}
-	grsys.Endgr()
+	grsys.EndGr()
 }
 
 func row(nRow, xOrig, y, r float64) {
