@@ -9,8 +9,6 @@ import (
 	"io"
 	"log"
 	"os"
-	"os/user"
-	"path"
 )
 
 var (
@@ -61,7 +59,7 @@ func InitGr(filename string) {
 	}
 	if filename != "" {
 		var err error
-		plotFile, err = os.Create(getWorkPath(filename))
+		plotFile, err = os.Create(filename)
 		if err != nil {
 			ErrorMsg(err.Error())
 		}
@@ -83,7 +81,7 @@ func EndGr() {
 		}
 		plotFile = nil
 	}
-	f, err := os.Create(getWorkPath("ppicg.gif"))
+	f, err := os.Create("ppicg.gif")
 	if err != nil {
 		ErrorMsg(err.Error())
 	}
@@ -99,15 +97,4 @@ func EndGr() {
 func ErrorMsg(msg string) {
 	log.SetFlags(0)
 	log.Fatal(msg)
-}
-
-func getWorkPath(filename string) string {
-	u, err := user.Current()
-	if err != nil {
-		ErrorMsg(err.Error())
-	}
-	if u.HomeDir == "" {
-		return filename
-	}
-	return path.Join(u.HomeDir, "Desktop", filename)
 }

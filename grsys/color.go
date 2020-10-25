@@ -29,7 +29,7 @@ func SetRGBPalette(index, r, g, b int) {
 }
 
 func ShadedColors() {
-	f, err := os.Open(getWorkPath("palette.txt"))
+	f, err := os.Open("palette.txt")
 	if err == nil {
 		for i := 0; i < NColors; i++ {
 			var r, g, b int
