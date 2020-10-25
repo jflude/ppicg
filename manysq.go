@@ -54,7 +54,7 @@ func main() {
 	if _, err := fmt.Scanln(&lambda); err != nil {
 		grsys.ErrorMsg(err.Error())
 	}
-	grsys.InitGr("")
+	grsys.InitGr("manysq.hpg")
 	a := 1.9 * grsys.RMax / float64(n) // length of side of largest square
 	for i := 0; i < n; i++ {
 		for j := 0; j < n; j++ {
