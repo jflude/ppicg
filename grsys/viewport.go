@@ -1,7 +1,10 @@
 // Conversion from world coordinates to viewport coordinates.
 package grsys
 
-import "math"
+import (
+	"errors"
+	"math"
+)
 
 var (
 	xMinWorld, xMaxWorld         float64
@@ -23,7 +26,7 @@ func InitWindow() {
 
 func UpdateWindowBoundaries(x, y float64) {
 	if !iwCalled {
-		ErrorMsg("Call InitWindow before UpdateWindowBoundaries")
+		Error(errors.New("Call InitWindow before UpdateWindowBoundaries"))
 	}
 	if x < xMinWorld {
 		xMinWorld = x
@@ -42,10 +45,10 @@ func UpdateWindowBoundaries(x, y float64) {
 
 func ViewportBoundaries(Xmin, Xmax, Ymin, Ymax, reductionFactor float64) {
 	if !inGrMode {
-		ErrorMsg("Call InitGr before ViewportBoundaries")
+		Error(errors.New("Call InitGr before ViewportBoundaries"))
 	}
 	if !wbCalled {
-		ErrorMsg("Call UpdateWindowBoundaries before ViewportBoundaries")
+		Error(errors.New("Call UpdateWindowBoundaries before ViewportBoundaries"))
 	}
 	xCView = (XMin + XMax) / 2
 	yCView = (YMin + YMax) / 2
@@ -64,14 +67,14 @@ func ViewportBoundaries(Xmin, Xmax, Ymin, Ymax, reductionFactor float64) {
 
 func XViewport(x float64) float64 {
 	if !vbCalled {
-		ErrorMsg("Call ViewportBoundaries before XViewport")
+		Error(errors.New("Call ViewportBoundaries before XViewport"))
 	}
 	return xCView + fScale*(x-xCWorld)
 }
 
 func YViewport(y float64) float64 {
 	if !vbCalled {
-		ErrorMsg("Call ViewportBoundaries before YViewport")
+		Error(errors.New("Call ViewportBoundaries before YViewport"))
 	}
 	return yCView + fScale*(y-yCWorld)
 
@@ -85,7 +88,7 @@ type vpNode struct {
 func AppendPlot(x, y float64, code int) {
 	// Store point (x, y) and plotcode (0=up, 1=down) in queue.
 	if !iwCalled {
-		ErrorMsg("Call InitWindow before AppendPlot")
+		Error(errors.New("Call InitWindow before AppendPlot"))
 	}
 	vpPlots = append(vpPlots, vpNode{x, y, code})
 	UpdateWindowBoundaries(x, y)
@@ -93,7 +96,7 @@ func AppendPlot(x, y float64, code int) {
 
 func GenPlot() {
 	if !inGrMode {
-		ErrorMsg("Call InitGr before GenPlot")
+		Error(errors.New("Call InitGr before GenPlot"))
 	}
 	ViewportBoundaries(XMin, XMax, YMin, YMax, 0.9)
 	for _, p := range vpPlots {

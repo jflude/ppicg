@@ -34,7 +34,7 @@ func ShadedColors() {
 		for i := 0; i < NColors; i++ {
 			var r, g, b int
 			if _, err := fmt.Fscanln(f, &r, &g, &b); err != nil {
-				ErrorMsg(err.Error())
+				Error(err)
 			}
 			SetRGBPalette(i, r, g, b)
 		}

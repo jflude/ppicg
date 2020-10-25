@@ -9,7 +9,7 @@ func main() {
 	fmt.Print("Enter the number of intervals for hatching: ")
 	var m int
 	if _, err := fmt.Scanln(&m); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 
 	grsys.InitGr("")

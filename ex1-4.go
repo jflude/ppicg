@@ -10,7 +10,7 @@ func main() {
 	fmt.Print("Enter the radius of the hexagons: ")
 	var r float64
 	if _, err := fmt.Scanln(&r); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 	grsys.InitGr("")
 

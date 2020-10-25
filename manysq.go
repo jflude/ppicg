@@ -41,18 +41,18 @@ func main() {
 	fmt.Print("Enter n (eg. 8 for a chess board): ")
 	var n int
 	if _, err := fmt.Scanln(&n); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 	halfn := float64(n) / 2
 	fmt.Print("How many squares in each set? (eg. 10): ")
 	var m int
 	if _, err := fmt.Scanln(&m); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 	fmt.Print("Enter interpolation factor between 0 and 1 (eg. 0.2): ")
 	var lambda float64
 	if _, err := fmt.Scanln(&lambda); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 	grsys.InitGr("manysq.hpg")
 	a := 1.9 * grsys.RMax / float64(n) // length of side of largest square

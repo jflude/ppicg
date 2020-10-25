@@ -18,7 +18,7 @@ func main() {
 	}
 	f, err := os.Open(os.Args[1])
 	if err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 
 	grsys.InitWindow()
@@ -30,12 +30,12 @@ func main() {
 			if errors.Is(err, io.EOF) {
 				break
 			}
-			grsys.ErrorMsg(err.Error())
+			grsys.Error(err)
 		}
 		grsys.UpdateWindowBoundaries(x, y)
 	}
 	if _, err := f.Seek(0, os.SEEK_SET); err != nil {
-		grsys.ErrorMsg(err.Error())
+		grsys.Error(err)
 	}
 
 	grsys.InitGr("adjust.hpg") // plot file desired
@@ -53,7 +53,7 @@ func main() {
 			if errors.Is(err, io.EOF) {
 				break
 			}
-			grsys.ErrorMsg(err.Error())
+			grsys.Error(err)
 		}
 		x := grsys.XViewport(x)
 		y := grsys.YViewport(y)

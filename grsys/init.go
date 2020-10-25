@@ -61,7 +61,7 @@ func InitGr(filename string) {
 		var err error
 		plotFile, err = os.Create(filename)
 		if err != nil {
-			ErrorMsg(err.Error())
+			Error(err)
 		}
 		fmt.Fprint(plotFile, "IN;SP0;SC0,10000,0,",
 			plotCoord(YMax-YMin), ";\n")
@@ -77,24 +77,24 @@ func EndGr() {
 	}
 	if plotFile != nil {
 		if err := plotFile.Close(); err != nil {
-			ErrorMsg(err.Error())
+			Error(err)
 		}
 		plotFile = nil
 	}
 	f, err := os.Create("ppicg.gif")
 	if err != nil {
-		ErrorMsg(err.Error())
+		Error(err)
 	}
 	if err := gif.Encode(f, canvas, nil); err != nil {
 		f.Close()
-		ErrorMsg(err.Error())
+		Error(err)
 	}
 	if err := f.Close(); err != nil {
-		ErrorMsg(err.Error())
+		Error(err)
 	}
 }
 
-func ErrorMsg(msg string) {
+func Error(err error) {
 	log.SetFlags(0)
-	log.Fatal(msg)
+	log.Fatal(err)
 }
