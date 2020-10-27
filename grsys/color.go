@@ -1,4 +1,4 @@
-// Graphics primitives.
+// Color primitives.
 package grsys
 
 import (

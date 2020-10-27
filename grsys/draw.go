@@ -1,4 +1,4 @@
-// Graphics primitives.
+// Line-drawing primitives.
 package grsys
 
 import (
