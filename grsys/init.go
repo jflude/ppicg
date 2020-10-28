@@ -30,6 +30,7 @@ var (
 
 	palette  color.Palette
 	canvas   *image.Paletted
+	encoding gif.GIF
 	plotFile io.WriteCloser
 	inGrMode bool
 )
@@ -85,7 +86,13 @@ func EndGr() {
 	if err != nil {
 		Error(err)
 	}
-	if err := gif.Encode(f, canvas, nil); err != nil {
+	if encoding.Image == nil {
+		err = gif.Encode(f, canvas, nil)
+	} else {
+		Frame(500)
+		err = gif.EncodeAll(f, &encoding)
+	}
+	if err != nil {
 		f.Close()
 		Error(err)
 	}
@@ -97,4 +104,11 @@ func EndGr() {
 func Error(err error) {
 	log.SetFlags(0)
 	log.Fatal(err)
+}
+
+func Frame(delay int) {
+	dup := image.NewPaletted(canvas.Rect, canvas.Palette)
+	copy(dup.Pix, canvas.Pix)
+	encoding.Image = append(encoding.Image, dup)
+	encoding.Delay = append(encoding.Delay, delay)
 }
