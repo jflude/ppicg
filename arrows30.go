@@ -8,14 +8,19 @@ import (
 )
 
 func main() {
-	var p [4]grsys.Vec = [4]grsys.Vec{{0, -7}, {0, 7}, {-2, 0}, {2, 0}}
+	var p [4]grsys.Vec = [4]grsys.Vec{
+		{X: 0, Y: -7},
+		{X: 0, Y: 7},
+		{X: -2, Y: 0},
+		{X: 2, Y: 0},
+	}
 	phi := math.Pi / 15
 	cosphi := math.Cos(phi)
 	sinphi := math.Sin(phi)
 	grsys.InitGr("")
 
-	center := grsys.Vec{grsys.XCenter, grsys.YCenter}
-	start := center.Add(grsys.Vec{0.9 * grsys.RMax, 0})
+	center := grsys.Vec{X: grsys.XCenter, Y: grsys.YCenter}
+	start := center.Add(grsys.Vec{X: 0.9 * grsys.RMax, Y: 0})
 	for j := 0; j < 4; j++ {
 		p[j] = p[j].Mul(0.01 * grsys.RMax).Add(start)
 	}

@@ -14,7 +14,7 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		grsys.ErrorMsg("No valid input file as program argument")
+		grsys.Error(errors.New("No valid input file as program argument"))
 	}
 	f, err := os.Open(os.Args[1])
 	if err != nil {
