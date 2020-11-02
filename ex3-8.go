@@ -99,7 +99,7 @@ func main() {
 func drawCircle(c grsys.Vec, r float64) {
 	var q grsys.Vec
 	for th := 0.0; th <= 2*math.Pi; th += math.Pi / 50 {
-		p := c.Add(grsys.Vec{r * math.Cos(th), r * math.Sin(th)})
+		p := c.Add(grsys.Vec{X: r * math.Cos(th), Y: r * math.Sin(th)})
 		if th == 0 {
 			grsys.AppendPlot(p.X, p.Y, 0)
 			q = p

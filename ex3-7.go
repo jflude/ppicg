@@ -48,7 +48,7 @@ func main() {
 	bg := bc.Mul(bfLen / bcLen) // bgLen == bfLen
 	f := b.Add(bf)
 	g := b.Add(bg)
-	center := f.Add(grsys.Vec{-bf.Y, bf.X}.Mul(r / bfLen))
+	center := f.Add(grsys.Vec{X: -bf.Y, Y: bf.X}.Mul(r / bfLen))
 
 	p := f.Sub(center)
 	q := g.Sub(center)
@@ -56,10 +56,10 @@ func main() {
 	gTheta := math.Atan2(q.Y, q.X)
 
 	grsys.InitGr("")
-	b.Sub(grsys.Vec{-0.05, -0.05}).Move()
-	b.Sub(grsys.Vec{0.05, 0.05}).Draw()
-	b.Sub(grsys.Vec{-0.05, 0.05}).Move()
-	b.Sub(grsys.Vec{0.05, -0.05}).Draw()
+	b.Sub(grsys.Vec{X: -0.05, Y: -0.05}).Move()
+	b.Sub(grsys.Vec{X: 0.05, Y: 0.05}).Draw()
+	b.Sub(grsys.Vec{X: -0.05, Y: 0.05}).Move()
+	b.Sub(grsys.Vec{X: 0.05, Y: -0.05}).Draw()
 	a.Move()
 	if gTheta < fTheta {
 		gTheta += 2 * math.Pi
