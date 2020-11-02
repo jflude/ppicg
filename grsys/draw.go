@@ -6,8 +6,14 @@ import (
 	"image"
 )
 
-var pen image.Point
-var outside bool
+var (
+	ImageWidth  int = 800 // X__max
+	ImageHeight int = 600 // Y__max
+
+	canvas  *image.Paletted
+	pen     image.Point
+	outside bool
+)
 
 func plotCoord(x float64) int {
 	return int(1000*x + 0.5)

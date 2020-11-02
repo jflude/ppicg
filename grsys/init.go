@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"image"
 	"image/color"
-	"image/gif"
 	"io"
 	"log"
 	"os"
@@ -21,16 +20,6 @@ var (
 	RMax    float64
 	Density float64
 
-	ImageWidth  int = 800 // X__max
-	ImageHeight int = 600 // Y__max
-	NColors     int
-
-	ForeGrColor int = 14
-	BackGrColor int = 0
-
-	palette  color.Palette
-	canvas   *image.Paletted
-	encoding gif.GIF
 	plotFile io.WriteCloser
 	inGrMode bool
 )
@@ -82,33 +71,10 @@ func EndGr() {
 		}
 		plotFile = nil
 	}
-	f, err := os.Create("ppicg.gif")
-	if err != nil {
-		Error(err)
-	}
-	if encoding.Image == nil {
-		err = gif.Encode(f, canvas, nil)
-	} else {
-		Frame(500)
-		err = gif.EncodeAll(f, &encoding)
-	}
-	if err != nil {
-		f.Close()
-		Error(err)
-	}
-	if err := f.Close(); err != nil {
-		Error(err)
-	}
+	encode("ppicg.gif")
 }
 
 func Error(err error) {
 	log.SetFlags(0)
 	log.Fatal(err)
-}
-
-func Frame(delay int) {
-	dup := image.NewPaletted(canvas.Rect, canvas.Palette)
-	copy(dup.Pix, canvas.Pix)
-	encoding.Image = append(encoding.Image, dup)
-	encoding.Delay = append(encoding.Delay, delay)
 }

@@ -7,6 +7,14 @@ import (
 	"os"
 )
 
+var (
+	NColors     int
+	ForeGrColor int = 14
+	BackGrColor int = 0
+
+	palette color.Palette
+)
+
 func SetColor(c int) {
 	ForeGrColor = c
 }
