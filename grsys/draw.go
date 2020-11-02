@@ -68,39 +68,47 @@ func PutPix(x, y int) {
 	}
 }
 
-func DrawLine(x1, y1, x2, y2 int) {
-	y1 = ImageHeight - y1
-	y2 = ImageHeight - y2
-	dx := x2 - x1
+func DrawLine(xP, yP, xQ, yQ int) {
+	yP = ImageHeight - yP
+	yQ = ImageHeight - yQ
+	dx := xQ - xP
+	dy := yQ - yP
+	xInc := 1
+	yInc := 1
 	if dx < 0 {
+		xInc = -1
 		dx = -dx
 	}
-	sx := -1
-	if x1 < x2 {
-		sx = 1
-	}
-	dy := y1 - y2
-	if dy > 0 {
+	if dy < 0 {
+		yInc = -1
 		dy = -dy
 	}
-	sy := -1
-	if y1 < y2 {
-		sy = 1
-	}
-	exy := dx + dy /* error value e_xy */
-	for {
-		PutPix(x1, y1)
-		if x1 == x2 && y1 == y2 {
-			break
+	x := xP
+	y := yP
+	D := 0
+	if dy < dx {
+		c := 2 * dx
+		M := 2 * dy
+		for x != xQ {
+			PutPix(x, y)
+			x += xInc
+			D += M
+			if D > dx {
+				y += yInc
+				D -= c
+			}
 		}
-		e2 := 2 * exy
-		if e2 >= dy { /* e_xy + e_x > 0 */
-			exy += dy
-			x1 += sx
-		}
-		if e2 <= dx { /* e_xy + e_y < 0 */
-			exy += dx
-			y1 += sy
+	} else {
+		c := 2 * dy
+		M := 2 * dx
+		for y != yQ {
+			PutPix(x, y)
+			y += yInc
+			D += M
+			if D > dy {
+				x += xInc
+				D -= c
+			}
 		}
 	}
 }
