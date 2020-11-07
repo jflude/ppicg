@@ -113,7 +113,7 @@ func Fill(X []int, Y []int) {
 		for p := start; p != end; p = p.next {
 			xleft := p.xP + 1
 			p = p.next
-			xright := p.xP - 1
+			xright := p.xP
 			if xleft <= xright {
 				HorLine(xleft, xright, y)
 			}
