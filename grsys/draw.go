@@ -119,7 +119,6 @@ func DrawLine(xP, yP, xQ, yQ int) {
 	}
 }
 
-func HorizLine(xLeft, xRight, y int) {
-	y = ImageHeight - y
+func HorLine(xLeft, xRight, y int) {
 	DrawLine(xLeft, y, xRight, y)
 }
