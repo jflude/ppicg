@@ -2,6 +2,7 @@
 package grsys
 
 import (
+	"errors"
 	"image"
 	"image/gif"
 	"os"
@@ -30,6 +31,9 @@ func encode(filename string) {
 }
 
 func Frame(delay int) {
+	if delay < 0 {
+		Error(errors.New("Invalid delay"))
+	}
 	dup := image.NewPaletted(canvas.Rect, canvas.Palette)
 	copy(dup.Pix, canvas.Pix)
 	encoding.Image = append(encoding.Image, dup)
