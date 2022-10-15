@@ -1,5 +1,3 @@
-// Copyright (c) 2020 Justin Flude.
-// Use of this source code is governed by the COPYING.md file.
 // Demonstration program for polygon filling.
 // The name of an input file must be given as a program argument.
 // This file must contain n pairs of pixel coordinates.
