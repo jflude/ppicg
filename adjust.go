@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Justin Flude.
+// Use of this source code is governed by the COPYING.md file.
 // This program reads data from any text file containing lines of the
 // form x y code (code = 1: pen down; code = 0: pen up), and displays
 // lines, all fitting into a given viewport.  The file name is to be

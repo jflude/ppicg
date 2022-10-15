@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Justin Flude.
+// Use of this source code is governed by the COPYING.md file.
 // Implementation of Cohen-Sutherland line clipping.
 package grsys
 

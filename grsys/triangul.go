@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Justin Flude.
+// Use of this source code is governed by the COPYING.md file.
 // Triangulation of polygons.
 // Triangulation of a polygon with successive vertex numbers
 // pol[0], ..., pol[n-1], in counter-clockwise order.  With

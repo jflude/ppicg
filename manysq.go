@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Justin Flude.
+// Use of this source code is governed by the COPYING.md file.
 // This program draws n x n sets of squares, arranged as on a chess board.
 package main
 
