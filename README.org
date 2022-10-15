@@ -1,0 +1,14 @@
+* Programming Principles in Computer Graphics
+Leendert Ammeraal, 1992 (2nd edition)
+
+Exercises from the book and its supporting graphics library, ported to Go
+from [[https://en.wikipedia.org/wiki/Borland_C%2B%2B][Borland C++]].
+
+Copyright (c) 2020-2024 Justin Flude <justin_flude@hotmail.com>.
+Use of this source code is governed by the LICENSE file. 
+
+A good primer that gathered dust on my shelves for decades.
+
+Images are output to =ppicg.gif=
+
+[[https://github.com/jflude/ppicg/blob/master/ex4-4.gif][Ex. 4-4]]

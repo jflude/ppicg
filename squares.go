@@ -1,5 +1,3 @@
-// Copyright (c) 2020 Justin Flude.
-// Use of this source code is governed by the COPYING.md file.
 // This program draws 50 squares inside each other.
 package main
 

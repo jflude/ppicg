@@ -1,6 +1,10 @@
-// Copyright (c) 2020 Justin Flude.
-// Use of this source code is governed by the COPYING.md file.
 // Triangulation of polygons.
+package grsys
+
+type Trianrs struct {
+	A, B, C int
+}
+
 // Triangulation of a polygon with successive vertex numbers
 // pol[0], ..., pol[n-1], in counter-clockwise order.  With
 // three given vertex numbers P, Q, R, function orienta must
@@ -14,12 +18,6 @@
 // Memory space for slice 'nrs' must be supplied by the caller.
 // Return value: the number of triangles found, or -1 if no
 // proper polygon, or vertices are clockwise
-package grsys
-
-type Trianrs struct {
-	A, B, C int
-}
-
 func Triangul(pol []int, n int, nrs []Trianrs,
 	orienta func(int, int, int) int) int {
 	if n < 3 {
